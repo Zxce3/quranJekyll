@@ -1,0 +1,45 @@
+{% for surah in site.data.qc %}
+<!-- modal surah  {{ surah.name }} -->
+<div class="modal modal-full ie-scroll-fix" id="{{ surah.number_of_surah }}" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <a href="#" class="close" role="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <div class="container">
+                      <div class="row">
+                          <div class="col-md-8 offset-md-2">
+                              <br><br>
+                              <div class="text-muted font-size-20 font-weight-medium">
+                                  {{ surah.type }}
+                                  <i class="fa fa-angle-right ml-5"></i>
+                              </div>
+                              <h2 class="mt-10 mb-10 font-weight-bolder">
+                                {{ surah.name }}
+                              </h2>
+                              <div class="font-size-20">
+                                  Surat ke {{ surah.number_of_surah }}
+                                  <i class="fa fa-angle-right ml-5"></i>
+                                  <span class="ml-5 text-muted">{{ surah.number_of_ayah }} Ayat</span>
+                              </div>
+                              <br>
+                              <div class="font-size-18">
+                                <p class="text-right"> بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+                                {% for vers in surah.verses %}
+                                <p class="text-right">{{ vers.text }}</p>
+                                <p class="text-right">{{ vers.translation_id }}</p>
+                                {% endfor %}
+                              </div>
+                              <hr>
+                              {% for tafsir in surah.tafsir %}
+                              <div class="mt-20 text-muted">
+                                Tafsir {{ surah.tafsir.id.kemenag.text }}
+                              </div>
+                              {% endfor %}
+                          </div>
+                      </div>
+                  </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
